@@ -50,8 +50,12 @@ readonly class Account
             'query' => []
         ];
 
-        if ($dateFrom) $params['query']['date_from'] = $dateFrom;
-        if ($dateTo) $params['query']['date_to'] = $dateTo;
+        if ($dateFrom) {
+            $params['query']['date_from'] = $dateFrom;
+        }
+        if ($dateTo) {
+            $params['query']['date_to'] = $dateTo;
+        }
 
         $response = $this->requestHandler->get("accounts/{$this->accountId}/transactions/", $params);
         return json_decode($response->getBody()->getContents(), true);
@@ -71,9 +75,15 @@ readonly class Account
             'query' => []
         ];
 
-        if ($country) $params['query']['country'] = $country;
-        if ($dateFrom) $params['query']['date_from'] = $dateFrom;
-        if ($dateTo) $params['query']['date_to'] = $dateTo;
+        if ($country) {
+            $params['query']['country'] = $country;
+        }
+        if ($dateFrom) {
+            $params['query']['date_from'] = $dateFrom;
+        }
+        if ($dateTo) {
+            $params['query']['date_to'] = $dateTo;
+        }
 
         $response = $this->requestHandler->get("accounts/premium/{$this->accountId}/transactions/", $params);
         return json_decode($response->getBody()->getContents(), true);

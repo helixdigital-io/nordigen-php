@@ -51,12 +51,24 @@ class Requisition
             'redirect' => $redirect,
             'institution_id' => $institutionId
         ];
-        if ($endUserAgreementId) $payload['agreement'] = $endUserAgreementId;
-        if ($reference) $payload['reference'] = $reference;
-        if ($userLanguage) $payload['user_language'] = $userLanguage;
-        if ($ssn) $payload['ssn'] = $ssn;
-        if ($accountSelection) $payload['account_selection'] = $accountSelection;
-        if ($redirectImmediate) $payload['redirect_immediate'] = $redirectImmediate;
+        if ($endUserAgreementId) {
+            $payload['agreement'] = $endUserAgreementId;
+        }
+        if ($reference) {
+            $payload['reference'] = $reference;
+        }
+        if ($userLanguage) {
+            $payload['user_language'] = $userLanguage;
+        }
+        if ($ssn) {
+            $payload['ssn'] = $ssn;
+        }
+        if ($accountSelection) {
+            $payload['account_selection'] = $accountSelection;
+        }
+        if ($redirectImmediate) {
+            $payload['redirect_immediate'] = $redirectImmediate;
+        }
 
         $response = $this->requestHandler->post('requisitions/', [
             'json' => $payload
