@@ -32,6 +32,7 @@ class ExceptionHandler
      *
      * @param ResponseInterface $response
      * @return void
+     * @throws NordigenException
      */
     public static function handleException(ResponseInterface $response): void
     {
