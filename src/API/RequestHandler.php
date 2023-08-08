@@ -28,11 +28,7 @@ class RequestHandler
      */
     public function setHttpClient($client): Client
     {
-        if ($client !== NULL) {
-            return $client;
-        }
-
-        return new Client([
+        return $client ?? new Client([
             "base_uri" => $this->baseUri,
             "headers" => [
                 "accept" => "application/json",
