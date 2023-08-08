@@ -3,7 +3,6 @@
 namespace Nordigen\NordigenPHP\API;
 
 use GuzzleHttp\ClientInterface;
-use Nordigen\NordigenPHP\Enums\AccessScope;
 
 class NordigenClient
 {
