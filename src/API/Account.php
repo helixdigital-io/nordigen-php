@@ -11,7 +11,6 @@ readonly class Account
 
     /**
      * Retrieve account meta-data.
-     * @return array
      */
     public function getAccountMetaData(): array
     {
@@ -22,27 +21,26 @@ readonly class Account
 
     /**
      * Retrieve account balances.
-     * @return array
      */
     public function getAccountBalances(): array
     {
         $response = $this->requestHandler->get("accounts/{$this->accountId}/balances/");
+
         return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
      * Retrieve account details.
-     * @return array
      */
     public function getAccountDetails(): array
     {
         $response = $this->requestHandler->get("accounts/{$this->accountId}/details/");
+
         return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
      * Retrieve account transactions.
-     *
      */
     public function getAccountTransactions(?string $dateFrom = null, ?string $dateTo = null): array
     {
@@ -58,16 +56,12 @@ readonly class Account
         }
 
         $response = $this->requestHandler->get("accounts/{$this->accountId}/transactions/", $params);
+
         return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
      * Retrieve premium account transactions.
-     * @param ?string $country
-     * @param ?string $dateFrom
-     * @param ?string $dateTo
-     *
-     * @return array
      */
     public function getPremiumAccountTransactions(?string $country = null, ?string $dateFrom = null, ?string $dateTo = null): array
     {
@@ -86,6 +80,7 @@ readonly class Account
         }
 
         $response = $this->requestHandler->get("accounts/premium/{$this->accountId}/transactions/", $params);
+
         return json_decode($response->getBody()->getContents(), true);
     }
 }

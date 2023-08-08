@@ -20,6 +20,7 @@ class Requisition
     public function getRequisitions(): array
     {
         $response = $this->requestHandler->get('requisitions/');
+
         return json_decode($response->getBody()->getContents(), true);
     }
 
@@ -73,6 +74,7 @@ class Requisition
         $response = $this->requestHandler->post('requisitions/', [
             'json' => $payload
         ]);
+
         return json_decode($response->getBody()->getContents(), true);
     }
 
@@ -85,6 +87,7 @@ class Requisition
     public function getRequisition(string $requisitionId): array
     {
         $response = $this->requestHandler->get("requisitions/{$requisitionId}/");
+
         return json_decode($response->getBody()->getContents(), true);
     }
 

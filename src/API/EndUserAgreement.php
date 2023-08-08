@@ -2,13 +2,11 @@
 
 namespace Nordigen\NordigenPHP\API;
 
-class EndUserAgreement
+readonly class EndUserAgreement
 {
-    private RequestHandler $requestHandler;
 
-    public function __construct(RequestHandler $requestHandler)
+    public function __construct(private RequestHandler $requestHandler)
     {
-        $this->requestHandler = $requestHandler;
     }
 
     /**
@@ -18,6 +16,7 @@ class EndUserAgreement
     public function getEndUserAgreements(): array
     {
         $response = $this->requestHandler->get('agreements/enduser/');
+
         return json_decode($response->getBody()->getContents(), true);
     }
 
@@ -46,6 +45,7 @@ class EndUserAgreement
         $response = $this->requestHandler->post('agreements/enduser/', [
             'json' => $payload
         ]);
+
         return json_decode($response->getBody()->getContents(), true);
     }
 
@@ -57,6 +57,7 @@ class EndUserAgreement
     public function getEndUserAgreement(string $endUserAgreementId): array
     {
         $response = $this->requestHandler->get("agreements/enduser/{$endUserAgreementId}/");
+
         return json_decode($response->getBody()->getContents(), true);
     }
 
@@ -92,6 +93,7 @@ class EndUserAgreement
         $response = $this->requestHandler->put("agreements/enduser/{$endUserAgreementId}/accept/", [
             'json' => $payload
         ]);
+
         return json_decode($response->getBody()->getContents(), true);
     }
 }

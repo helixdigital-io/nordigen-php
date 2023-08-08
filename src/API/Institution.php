@@ -20,6 +20,7 @@ class Institution
     public function getInstitutions(): array
     {
         $response = $this->requestHandler->get('institutions/');
+
         return json_decode($response->getBody()->getContents(), true);
     }
 
@@ -36,6 +37,7 @@ class Institution
                 'country' => $countryCode
             ]
         ]);
+
         return json_decode($response->getBody()->getContents(), true);
     }
 
@@ -48,6 +50,7 @@ class Institution
     public function getInstitution(string $institutionId): array
     {
         $response = $this->requestHandler->get("institutions/{$institutionId}/");
+
         return json_decode($response->getBody()->getContents(), true);
     }
 

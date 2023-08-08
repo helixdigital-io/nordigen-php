@@ -83,6 +83,7 @@ class NordigenClient
             $accountSelection,
             $redirectImmediate
         );
+
         return [
             'link' => $requisition["link"],
             'requisition_id' => $requisition["id"],
@@ -109,6 +110,7 @@ class NordigenClient
         $json = json_decode($response->getBody()->getContents(), true);
         $this->setAccessToken($json["access"]);
         $this->refreshToken = $json["refresh"];
+
         return $json;
     }
 
@@ -128,6 +130,7 @@ class NordigenClient
         ]);
         $json = json_decode($response->getBody()->getContents(), true);
         $this->setAccessToken($json["access"]);
+
         return $json;
     }
 
@@ -148,6 +151,7 @@ class NordigenClient
     public function setAccessToken($accessToken): self
     {
         $this->requestHandler->setAccessToken($accessToken);
+
         return $this;
     }
 
@@ -168,6 +172,7 @@ class NordigenClient
     public function setRefreshToken($refreshToken): self
     {
         $this->refreshToken = $refreshToken;
+
         return $this;
     }
 
