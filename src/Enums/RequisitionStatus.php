@@ -8,13 +8,13 @@ class RequisitionStatus
      * Requisition has been successfully created.
      * @var string
      */
-    public const CREATED   = 'CR';
+    public const CREATED = 'CR';
 
     /**
      * Account has been successfully linked to requisition.
      * @var string
      */
-    public const LINKED    = 'LN';
+    public const LINKED = 'LN';
 
     /**
      * Requisition is suspended due to numerous consecutive errors that happened while accessing its accounts.
@@ -54,7 +54,7 @@ class RequisitionStatus
     public const GRANTING_ACCESS = 'GA';
 
     /**
-     * 	Access to accounts has expired as set in End User Agreement.
+     *    Access to accounts has expired as set in End User Agreement.
      * @var string
      */
     public const EXPIRED = 'EX';

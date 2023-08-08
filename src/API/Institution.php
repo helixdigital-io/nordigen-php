@@ -2,8 +2,6 @@
 
 namespace Nordigen\NordigenPHP\API;
 
-use Nordigen\NordigenPHP\API\RequestHandler;
-
 class Institution
 {
 

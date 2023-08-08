@@ -2,10 +2,10 @@
 
 namespace Nordigen\NordigenPHP\Http;
 
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\BadResponseException;
 use Nordigen\NordigenPHP\Exceptions\ExceptionHandler;
 use Psr\Http\Message\ResponseInterface;
-use GuzzleHttp\ClientInterface;
 
 trait RequestHandlerTrait
 {

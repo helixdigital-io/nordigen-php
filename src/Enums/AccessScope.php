@@ -8,7 +8,7 @@ final class AccessScope
     /**
      * Details scope.
      * @var string
-    */
+     */
     public const DETAILS = 'details';
 
     /**

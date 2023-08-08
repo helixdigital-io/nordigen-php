@@ -2,7 +2,6 @@
 
 namespace Nordigen\NordigenPHP\Exceptions;
 
-use Nordigen\NordigenPHP\Exceptions\InstitutionExceptions;
 use Nordigen\NordigenPHP\Exceptions\NordigenExceptions\NordigenException;
 use Psr\Http\Message\ResponseInterface;
 

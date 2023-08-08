@@ -2,8 +2,6 @@
 
 namespace Nordigen\NordigenPHP\API;
 
-use Nordigen\NordigenPHP\API\Institution;
-use Nordigen\NordigenPHP\API\RequestHandler;
 use GuzzleHttp\ClientInterface;
 use Nordigen\NordigenPHP\Enums\AccessScope;
 

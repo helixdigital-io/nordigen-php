@@ -5,4 +5,6 @@ namespace Nordigen\NordigenPHP\Exceptions\InstitutionExceptions;
 /**
  * Request to institution failed unexpectedly.
  */
-class UnknownRequestError extends InstitutionException {}
+class UnknownRequestError extends InstitutionException
+{
+}

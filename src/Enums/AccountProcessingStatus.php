@@ -20,24 +20,24 @@ class AccountProcessingStatus
      * Account has been successfully processed.
      * @var string
      */
-    public const READY      = 'READY';
+    public const READY = 'READY';
 
     /**
      * An error was encountered while processing the account.
      * @var string
      */
-    public const ERROR      = 'ERROR';
+    public const ERROR = 'ERROR';
 
     /**
      * Account has been suspended (more than 10 consecutive failed attempts to access the account).
      * @var string
      */
-    public const SUSPENDED  = 'SUSPENDED';
+    public const SUSPENDED = 'SUSPENDED';
 
     /**
      * Access to account has expired as set in the End User Agreement.
      * @var string
      */
-    public const EXPIRED    = 'EXPIRED';
+    public const EXPIRED = 'EXPIRED';
 
 }

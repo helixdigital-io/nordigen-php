@@ -28,7 +28,7 @@ class RequestHandler
      */
     public function setHttpClient($client): Client
     {
-        if($client !== NULL) {
+        if ($client !== NULL) {
             return $client;
         }
 
