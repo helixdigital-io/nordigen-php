@@ -20,9 +20,9 @@ class ExceptionHandler
      * Get exception type
      *
      * @param array $response
-     * @return void
+     * @return string
      */
-    private static function getExceptionType(array $response)
+    private static function getExceptionType(array $response): string
     {
         return $response['type'] ?? 'NordigenException';
     }
