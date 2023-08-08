@@ -2,16 +2,14 @@
 
 namespace Nordigen\NordigenPHP\Enums;
 
-class AccountUsage
+enum AccountUsage: string
 {
     /**
      * Professional account.
-     * @var string
      */
-    public const ORGA = 'ORGA';
+    case ORGA = 'ORGA';
     /**
      * Private personal account.
-     * @var string
      */
-    public const PRIV = 'PRIVATE';
+    case PRIV = 'PRIVATE';
 }

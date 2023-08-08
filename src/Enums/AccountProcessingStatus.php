@@ -2,36 +2,30 @@
 
 namespace Nordigen\NordigenPHP\Enums;
 
-class AccountProcessingStatus
+enum AccountProcessingStatus: string
 {
     /**
      * User has successfully authenticated themselves, and the account has been discovered.
-     * @var string
      */
-    public const DISCOVERED = 'DISCOVERED';
+    case DISCOVERED = 'DISCOVERED';
     /**
      * An error was encountered while processing the account.
-     * @var string
      */
-    public const PROCESSING = 'PROCESSING';
+    case PROCESSING = 'PROCESSING';
     /**
      * Account has been successfully processed.
-     * @var string
      */
-    public const READY = 'READY';
+    case READY = 'READY';
     /**
      * An error was encountered while processing the account.
-     * @var string
      */
-    public const ERROR = 'ERROR';
+    case ERROR = 'ERROR';
     /**
      * Account has been suspended (more than 10 consecutive failed attempts to access the account).
-     * @var string
      */
-    public const SUSPENDED = 'SUSPENDED';
+    case SUSPENDED = 'SUSPENDED';
     /**
      * Access to account has expired as set in the End User Agreement.
-     * @var string
      */
-    public const EXPIRED = 'EXPIRED';
+    case EXPIRED = 'EXPIRED';
 }

@@ -2,21 +2,18 @@
 
 namespace Nordigen\NordigenPHP\Enums;
 
-final class AccessScope
+enum AccessScope: string
 {
     /**
      * Details scope.
-     * @var string
      */
-    public const DETAILS = 'details';
+    case DETAILS = 'details';
     /**
      * Balance scope.
-     * @var string
      */
-    public const BALANCES = 'balances';
+    case BALANCES = 'balances';
     /**
      * Transactions scope.
-     * @var string
      */
-    public const TRANSACTIONS = 'transactions';
+    case TRANSACTIONS = 'transactions';
 }
