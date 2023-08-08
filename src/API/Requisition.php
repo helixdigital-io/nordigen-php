@@ -80,7 +80,7 @@ class Requisition
      * Delete a requisition by its ID.
      * @param string $requisitionId The ID of the requisition.
      *
-     * @return bool Whether the requisition was successfully deleted.
+     * @return void Whether the requisition was successfully deleted.
      */
     public function deleteRequisition(string $requisitionId): void
     {

@@ -13,8 +13,6 @@ class EndUserAgreement
 
     /**
      * Retrieve all End-user Agreements for a specific End-user.
-     * @param string $endUserId The ID of the End-user in your system.
-     *
      * @return array
      */
     public function getEndUserAgreements(): array
@@ -27,8 +25,8 @@ class EndUserAgreement
      * Create a new End-user Agreement.
      * @param string $institutionId The ID of the Institution.
      * @param string[] $accessScope The requested access scope. All by default. See Enums\AccessScope for possible values.
-     * @param int|null $maxHistoricalDays Maximum number of days of transaction data to retrieve. 90 by default.
-     * @param int|null $accessValidForDays How long access to the end-user's account will be available. 90 days by default.
+     * @param int $maxHistoricalDays Maximum number of days of transaction data to retrieve. 90 by default.
+     * @param int $accessValidForDays How long access to the end-user's account will be available. 90 days by default.
      *
      * @return array
      */
@@ -53,8 +51,7 @@ class EndUserAgreement
 
     /**
      * Retrieve an End-user Agreement.
-     * @param string $euaId The ID of the End-user Agreement.
-     *
+     * @param string $endUserAgreementId
      * @return array
      */
     public function getEndUserAgreement(string $endUserAgreementId): array
@@ -65,8 +62,7 @@ class EndUserAgreement
 
     /**
      * Delete an End-user agreement.
-     * @param string $euaId The ID of the End-user agreement.
-     *
+     * @param string $endUserAgreementId
      * @return void
      */
     public function deleteEndUserAgreement(string $endUserAgreementId): void
@@ -76,7 +72,7 @@ class EndUserAgreement
 
     /**
      * Accept an End-user agreement.
-     * @param string $euaId The ID of the End-user Agreement.
+     * @param string $endUserAgreementId
      * @param string $userAgent The End-user's user agent.
      * @param string $ipAddress The End-user's IP address.
      *

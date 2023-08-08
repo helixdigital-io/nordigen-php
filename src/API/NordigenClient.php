@@ -43,12 +43,11 @@ class NordigenClient
      * The result will be an array containing the URL for user authentication and the IDs of the
      * newly created requisition and End-user agreement.
      * @param string $institutionIdentifier ID of the Institution.
+     * @param string $redirect The URI where the End-user will be redirected to after authentication.
      * @param int $maxHistoricalDays Maximum number of days of transaction data to retrieve. 90 by default.
      * @param int $accessValidForDays How long access to the end-user's account will be available. 90 days by default.
-     * @param string $endUserId The ID of the End-user in the client's system.
-     * @param string $reference Additional ID to identify the End-user. This value will be appended to the redirect.
-     * @param string $redirect The URI where the End-user will be redirected to after authentication.
-     * @param AccessScope[] $accessScope The requested access scope. All by default. See Enums\AccessScope for possible values.
+     * @param string|null $reference Additional ID to identify the End-user. This value will be appended to the redirect.
+     * @param array|null $accessScopes
      * @param string|null $userLanguage Language to use in views. Two-letter country code (ISO 639-1).
      * @param string|null $ssn SSN (social security number) field to verify ownership of the account.
      * @param bool|null $accountSelection Option to enable account selection view for the end user.
@@ -146,7 +145,6 @@ class NordigenClient
     /**
      * Set the value of accessToken in the request handler.
      *
-     * @return  self
      */
     public function setAccessToken($accessToken): self
     {
@@ -167,7 +165,6 @@ class NordigenClient
     /**
      * Set the value of refreshToken
      *
-     * @return  self
      */
     public function setRefreshToken($refreshToken): self
     {
@@ -188,7 +185,6 @@ class NordigenClient
     /**
      * Set the value of requisitionLink
      *
-     * @return  self
      */
     public function setRequisitionLink($requisitionLink): self
     {

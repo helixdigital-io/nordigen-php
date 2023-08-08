@@ -32,8 +32,6 @@ readonly class Account
 
     /**
      * Retrieve account details.
-     * @param string $accountId
-     *
      * @return array
      */
     public function getAccountDetails(): array
@@ -44,9 +42,7 @@ readonly class Account
 
     /**
      * Retrieve account transactions.
-     * @param string $accountId
      *
-     * @return array
      */
     public function getAccountTransactions(?string $dateFrom = null, ?string $dateTo = null): array
     {
