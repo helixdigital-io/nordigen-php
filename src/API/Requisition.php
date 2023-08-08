@@ -2,20 +2,14 @@
 
 namespace Nordigen\NordigenPHP\API;
 
-class Requisition
+readonly class Requisition
 {
-
-    private RequestHandler $requestHandler;
-
-    public function __construct(RequestHandler $requestHandler)
+    public function __construct(private RequestHandler $requestHandler)
     {
-        $this->requestHandler = $requestHandler;
     }
 
     /**
      * Get all requisitions associated with your company.
-     *
-     * @return array
      */
     public function getRequisitions(): array
     {
@@ -34,8 +28,6 @@ class Requisition
      * @param string|null $ssn SSN (social security number) field to verify ownership of the account.
      * @param bool|null $accountSelection Option to enable account selection view for the end user.
      * @param bool|null $redirectImmediate Option to enable redirect back to the client after account list received
-     *
-     * @return array
      */
     public function createRequisition(
         string  $redirect,
@@ -50,29 +42,35 @@ class Requisition
     {
         $payload = [
             'redirect' => $redirect,
-            'institution_id' => $institutionId
+            'institution_id' => $institutionId,
         ];
+
         if ($endUserAgreementId) {
             $payload['agreement'] = $endUserAgreementId;
         }
+
         if ($reference) {
             $payload['reference'] = $reference;
         }
+
         if ($userLanguage) {
             $payload['user_language'] = $userLanguage;
         }
+
         if ($ssn) {
             $payload['ssn'] = $ssn;
         }
+
         if ($accountSelection) {
             $payload['account_selection'] = $accountSelection;
         }
+
         if ($redirectImmediate) {
             $payload['redirect_immediate'] = $redirectImmediate;
         }
 
         $response = $this->requestHandler->post('requisitions/', [
-            'json' => $payload
+            'json' => $payload,
         ]);
 
         return json_decode($response->getBody()->getContents(), true);
@@ -81,8 +79,6 @@ class Requisition
     /**
      * Retrieve a requisition by its ID.
      * @param string $requisitionId The ID of the requisition.
-     *
-     * @return array
      */
     public function getRequisition(string $requisitionId): array
     {
@@ -101,5 +97,4 @@ class Requisition
     {
         $this->requestHandler->delete("requisitions/{$requisitionId}/");
     }
-
 }

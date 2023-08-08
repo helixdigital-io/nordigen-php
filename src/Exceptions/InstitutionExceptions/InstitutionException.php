@@ -6,5 +6,4 @@ use Nordigen\NordigenPHP\Exceptions\BaseException;
 
 class InstitutionException extends BaseException
 {
-
 }

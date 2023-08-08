@@ -7,12 +7,10 @@ use GuzzleHttp\ClientInterface;
 class NordigenClient
 {
     public const BASE_URL = 'https://ob.gocardless.com/api/v2/';
-
     private RequestHandler $requestHandler;
     public Institution $institution;
     public EndUserAgreement $endUserAgreement;
     public Requisition $requisition;
-
     private string $refreshToken;
     private string $requisitionLink;
 
@@ -26,14 +24,11 @@ class NordigenClient
 
     /**
      * @param string $accountId Account identifier.
-     *
-     * @return Account
      */
     public function account(string $accountId): Account
     {
         return new Account($this->requestHandler, $accountId);
     }
-
 
     /**
      * Perform all the necessary steps in order to retrieve the URL for user authentication. <br>
@@ -46,13 +41,10 @@ class NordigenClient
      * @param int $maxHistoricalDays Maximum number of days of transaction data to retrieve. 90 by default.
      * @param int $accessValidForDays How long access to the end-user's account will be available. 90 days by default.
      * @param string|null $reference Additional ID to identify the End-user. This value will be appended to the redirect.
-     * @param array|null $accessScopes
      * @param string|null $userLanguage Language to use in views. Two-letter country code (ISO 639-1).
      * @param string|null $ssn SSN (social security number) field to verify ownership of the account.
      * @param bool|null $accountSelection Option to enable account selection view for the end user.
      * @param bool|null $redirectImmediate Option to enable redirect back to the client after account list received
-     *
-     * @return array
      */
     public function initSession(
         string  $institutionIdentifier,
@@ -73,6 +65,7 @@ class NordigenClient
             $maxHistoricalDays,
             $accessValidForDays
         );
+
         $requisition = $this->requisition->createRequisition(
             $redirect,
             $institutionIdentifier,
@@ -87,48 +80,46 @@ class NordigenClient
         return [
             'link' => $requisition["link"],
             'requisition_id' => $requisition["id"],
-            'agreement_id' => $endUserAgreement["id"]
+            'agreement_id' => $endUserAgreement["id"],
         ];
     }
 
-
     /**
      * Create a new access token.
-     *
-     * @return array
      */
     public function createAccessToken(): array
     {
         [$secretId, $secretKey] = $this->requestHandler->getAuthentication();
+
         $response = $this->requestHandler->post('token/new/', [
             'headers' => [],
             'json' => [
                 'secret_id' => $secretId,
-                'secret_key' => $secretKey
-            ]
+                'secret_key' => $secretKey,
+            ],
         ]);
+
         $json = json_decode($response->getBody()->getContents(), true);
+
         $this->setAccessToken($json["access"]);
         $this->refreshToken = $json["refresh"];
 
         return $json;
     }
 
-
     /**
      * Refresh an access token.
-     *
-     * @param string $refreshToken
-     * @return array
      */
-    public function refreshAccessToken($refreshToken): array
+    public function refreshAccessToken(string $refreshToken): array
     {
         $response = $this->requestHandler->post('token/refresh/', [
             'json' => [
-                'refresh' => $refreshToken
-            ]
+                'refresh' => $refreshToken,
+            ],
         ]);
+
         $json = json_decode($response->getBody()->getContents(), true);
+
         $this->setAccessToken($json["access"]);
 
         return $json;
@@ -136,8 +127,6 @@ class NordigenClient
 
     /**
      * Get the value of accessToken in the request handler.
-     *
-     * @return string
      */
     public function getAccessToken(): string
     {
@@ -146,9 +135,8 @@ class NordigenClient
 
     /**
      * Set the value of accessToken in the request handler.
-     *
      */
-    public function setAccessToken($accessToken): self
+    public function setAccessToken(string $accessToken): self
     {
         $this->requestHandler->setAccessToken($accessToken);
 
@@ -157,8 +145,6 @@ class NordigenClient
 
     /**
      * Get the value of refreshToken
-     *
-     * @return string
      */
     public function getRefreshToken(): string
     {
@@ -169,7 +155,7 @@ class NordigenClient
      * Set the value of refreshToken
      *
      */
-    public function setRefreshToken($refreshToken): self
+    public function setRefreshToken(string $refreshToken): self
     {
         $this->refreshToken = $refreshToken;
 
@@ -178,8 +164,6 @@ class NordigenClient
 
     /**
      * Get the value of requisitionLink
-     *
-     * @return string
      */
     public function getRequisitionLink(): string
     {
@@ -188,9 +172,8 @@ class NordigenClient
 
     /**
      * Set the value of requisitionLink
-     *
      */
-    public function setRequisitionLink($requisitionLink): self
+    public function setRequisitionLink(string $requisitionLink): self
     {
         $this->requisitionLink = $requisitionLink;
 

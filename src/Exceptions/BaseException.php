@@ -8,12 +8,9 @@ use Throwable;
 
 class BaseException extends Exception
 {
-    private ResponseInterface $response;
-
-    public function __construct(ResponseInterface $response, $message = '', $code = 0, ?Throwable $previous = null)
+    public function __construct(private readonly ResponseInterface $response, $message = '', $code = 0, ?Throwable $previous = null)
     {
         parent::__construct($message, $code, $previous);
-        $this->response = $response;
     }
 
     public function getResponse(): ResponseInterface

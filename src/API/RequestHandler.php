@@ -11,6 +11,8 @@ class RequestHandler
     use RequestHandlerTrait;
 
     private string $accessToken;
+    /** @var string[] */
+    private array $authentication;
 
     public function __construct(string $baseUri, string $secretId, string $secretKey, ?ClientInterface $client)
     {
@@ -19,29 +21,22 @@ class RequestHandler
         $this->httpClient = $this->setHttpClient($client);
     }
 
-
     /**
      * Set headers for HttpClient
-     * @param ClientInterface $client
-     *
-     * @return Client
      */
-    public function setHttpClient($client): Client
+    public function setHttpClient(?ClientInterface $client): Client
     {
         return $client ?? new Client([
             "base_uri" => $this->baseUri,
             "headers" => [
                 "accept" => "application/json",
-                "User-Agent" => "Nordigen-PHP-v2"
-            ]
+                "User-Agent" => "Nordigen-PHP-v2",
+            ],
         ]);
     }
 
-
     /**
      * Get access token
-     *
-     * @return string
      */
     public function getAccessToken(): string
     {
@@ -50,9 +45,6 @@ class RequestHandler
 
     /**
      * Set existing access token.
-     * @param string $accessToken
-     *
-     * @return void
      */
     public function setAccessToken(string $accessToken): void
     {
@@ -61,20 +53,16 @@ class RequestHandler
             "base_uri" => $this->baseUri,
             "headers" => [
                 "accept" => "application/json",
-                "Authorization" => "Bearer {$accessToken}"
-            ]
+                "Authorization" => "Bearer {$accessToken}",
+            ],
         ]);
     }
 
     /**
      * Get authentication.
-     *
-     * @return array
      */
     public function getAuthentication(): array
     {
         return $this->authentication;
     }
-
-
 }

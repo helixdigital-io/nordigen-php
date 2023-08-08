@@ -18,9 +18,6 @@ class ExceptionHandler
 
     /**
      * Get exception type
-     *
-     * @param array $response
-     * @return string
      */
     private static function getExceptionType(array $response): string
     {
@@ -30,8 +27,6 @@ class ExceptionHandler
     /**
      * Handle Exception
      *
-     * @param ResponseInterface $response
-     * @return void
      * @throws NordigenException
      */
     public static function handleException(ResponseInterface $response): void
@@ -45,6 +40,7 @@ class ExceptionHandler
         $errorCode = $response->getStatusCode();
 
         $exception = self::$institutionExceptionMap[$errorType] ?? NordigenException::class;
+
         if ($exception == NordigenException::class) {
             $message = $summary;
         }

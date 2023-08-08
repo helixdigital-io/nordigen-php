@@ -9,11 +9,9 @@ class AccountUsage
      * @var string
      */
     public const ORGA = 'ORGA';
-
     /**
      * Private personal account.
      * @var string
      */
     public const PRIV = 'PRIVATE';
-
 }

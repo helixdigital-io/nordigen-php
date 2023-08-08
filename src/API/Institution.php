@@ -2,20 +2,14 @@
 
 namespace Nordigen\NordigenPHP\API;
 
-class Institution
+readonly class Institution
 {
-
-    private RequestHandler $requestHandler;
-
-    public function __construct(RequestHandler $requestHandler)
+    public function __construct(private RequestHandler $requestHandler)
     {
-        $this->requestHandler = $requestHandler;
     }
 
     /**
      * Get list of all institutions.
-     *
-     * @return array
      */
     public function getInstitutions(): array
     {
@@ -27,15 +21,13 @@ class Institution
     /**
      * Retrieve a list of Institutions by country.
      * @param string $countryCode ISO 3166 two-character country code
-     *
-     * @return array
      */
     public function getInstitutionsByCountry(string $countryCode): array
     {
         $response = $this->requestHandler->get('institutions/', [
             'query' => [
-                'country' => $countryCode
-            ]
+                'country' => $countryCode,
+            ],
         ]);
 
         return json_decode($response->getBody()->getContents(), true);
@@ -43,9 +35,6 @@ class Institution
 
     /**
      * Retrieve information about a single Institution
-     * @param string $institutionId
-     *
-     * @return array
      */
     public function getInstitution(string $institutionId): array
     {
@@ -53,5 +42,4 @@ class Institution
 
         return json_decode($response->getBody()->getContents(), true);
     }
-
 }

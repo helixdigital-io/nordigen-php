@@ -4,7 +4,6 @@ namespace Nordigen\NordigenPHP\API;
 
 readonly class Account
 {
-
     public function __construct(private RequestHandler $requestHandler, private string $accountId)
     {
     }
@@ -45,12 +44,13 @@ readonly class Account
     public function getAccountTransactions(?string $dateFrom = null, ?string $dateTo = null): array
     {
         $params = [
-            'query' => []
+            'query' => [],
         ];
 
         if ($dateFrom) {
             $params['query']['date_from'] = $dateFrom;
         }
+
         if ($dateTo) {
             $params['query']['date_to'] = $dateTo;
         }
@@ -66,15 +66,17 @@ readonly class Account
     public function getPremiumAccountTransactions(?string $country = null, ?string $dateFrom = null, ?string $dateTo = null): array
     {
         $params = [
-            'query' => []
+            'query' => [],
         ];
 
         if ($country) {
             $params['query']['country'] = $country;
         }
+
         if ($dateFrom) {
             $params['query']['date_from'] = $dateFrom;
         }
+
         if ($dateTo) {
             $params['query']['date_to'] = $dateTo;
         }

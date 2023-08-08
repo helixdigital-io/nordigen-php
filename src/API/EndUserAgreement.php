@@ -4,14 +4,12 @@ namespace Nordigen\NordigenPHP\API;
 
 readonly class EndUserAgreement
 {
-
     public function __construct(private RequestHandler $requestHandler)
     {
     }
 
     /**
      * Retrieve all End-user Agreements for a specific End-user.
-     * @return array
      */
     public function getEndUserAgreements(): array
     {
@@ -26,8 +24,6 @@ readonly class EndUserAgreement
      * @param string[] $accessScope The requested access scope. All by default. See Enums\AccessScope for possible values.
      * @param int $maxHistoricalDays Maximum number of days of transaction data to retrieve. 90 by default.
      * @param int $accessValidForDays How long access to the end-user's account will be available. 90 days by default.
-     *
-     * @return array
      */
     public function createEndUserAgreement(
         string $institutionId,
@@ -40,10 +36,11 @@ readonly class EndUserAgreement
             'max_historical_days' => $maxHistoricalDays,
             'access_valid_for_days' => $accessValidForDays,
             'access_scope' => $accessScope,
-            'institution_id' => $institutionId
+            'institution_id' => $institutionId,
         ];
+
         $response = $this->requestHandler->post('agreements/enduser/', [
-            'json' => $payload
+            'json' => $payload,
         ]);
 
         return json_decode($response->getBody()->getContents(), true);
@@ -51,8 +48,6 @@ readonly class EndUserAgreement
 
     /**
      * Retrieve an End-user Agreement.
-     * @param string $endUserAgreementId
-     * @return array
      */
     public function getEndUserAgreement(string $endUserAgreementId): array
     {
@@ -63,8 +58,6 @@ readonly class EndUserAgreement
 
     /**
      * Delete an End-user agreement.
-     * @param string $endUserAgreementId
-     * @return void
      */
     public function deleteEndUserAgreement(string $endUserAgreementId): void
     {
@@ -73,7 +66,6 @@ readonly class EndUserAgreement
 
     /**
      * Accept an End-user agreement.
-     * @param string $endUserAgreementId
      * @param string $userAgent The End-user's user agent.
      * @param string $ipAddress The End-user's IP address.
      *
@@ -87,11 +79,11 @@ readonly class EndUserAgreement
     {
         $payload = [
             'user_agent' => $userAgent,
-            'ip_address' => $ipAddress
+            'ip_address' => $ipAddress,
         ];
 
         $response = $this->requestHandler->put("agreements/enduser/{$endUserAgreementId}/accept/", [
-            'json' => $payload
+            'json' => $payload,
         ]);
 
         return json_decode($response->getBody()->getContents(), true);
