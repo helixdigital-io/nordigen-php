@@ -1,35 +1,35 @@
 {
-    "name": "nordigen/nordigen-php",
-    "description": "Nordigen official API client for PHP",
-    "type": "library",
-    "authors": [
-        {
-            "name": "Nordigen Solutions",
-            "email": "support@nordigen.com",
-            "homepage": "https://nordigen.com"
-        }
-    ],
-    "homepage": "https://nordigen.com",
-    "license": "MIT",
-    "keywords": [
-        "nordigen",
-        "open banking",
-        "psd2",
-        "api"
-    ],
-    "require": {
-        "php": ">=7.4",
-        "guzzlehttp/guzzle": "^7.3",
-        "ext-json": "*",
-        "ext-curl": "*"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^9.5",
-        "blastcloud/guzzler": "^2.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Nordigen\\NordigenPHP\\": "src/"
-        }
+  "name": "helixdigital-io/nordigen-php",
+  "description": "Nordigen official API client for PHP",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Nordigen Solutions",
+      "email": "support@nordigen.com",
+      "homepage": "https://nordigen.com"
     }
+  ],
+  "homepage": "https://nordigen.com",
+  "license": "MIT",
+  "keywords": [
+    "nordigen",
+    "open banking",
+    "psd2",
+    "api"
+  ],
+  "require": {
+    "php": "^8.2",
+    "guzzlehttp/guzzle": "^7.7.0",
+    "ext-json": "*",
+    "ext-curl": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.3.1",
+    "blastcloud/guzzler": "^2.1.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Nordigen\\NordigenPHP\\": "src/"
+    }
+  }
 }
