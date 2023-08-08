@@ -9,20 +9,20 @@ class Institution
 
     private RequestHandler $requestHandler;
 
-    public function __construct(RequestHandler $requestHandler) {
+    public function __construct(RequestHandler $requestHandler)
+    {
         $this->requestHandler = $requestHandler;
     }
 
     /**
      * Get list of all institutions.
-     * 
+     *
      * @return array
      */
     public function getInstitutions(): array
     {
         $response = $this->requestHandler->get('institutions/');
-        $json = json_decode($response->getBody()->getContents(), true);
-        return $json;
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
@@ -38,21 +38,19 @@ class Institution
                 'country' => $countryCode
             ]
         ]);
-        $json = json_decode($response->getBody()->getContents(), true);
-        return $json;
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
      * Retrieve information about a single Institution
      * @param string $institutionId
-     * 
+     *
      * @return array
      */
     public function getInstitution(string $institutionId): array
     {
         $response = $this->requestHandler->get("institutions/{$institutionId}/");
-        $json = json_decode($response->getBody()->getContents(), true);
-        return $json;
+        return json_decode($response->getBody()->getContents(), true);
     }
 
 }

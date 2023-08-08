@@ -25,8 +25,7 @@ class ExceptionHandler
      */
     private static function getExceptionType(array $response)
     {
-        $errorType = $response['type'] ?? 'NordigenException';
-        return $errorType;
+        return $response['type'] ?? 'NordigenException';
     }
 
     /**

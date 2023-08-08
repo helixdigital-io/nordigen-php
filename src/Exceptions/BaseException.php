@@ -2,10 +2,11 @@
 
 namespace Nordigen\NordigenPHP\Exceptions;
 
+use Exception;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
 
-class BaseException extends \Exception
+class BaseException extends Exception
 {
     private ResponseInterface $response;
 

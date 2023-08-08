@@ -9,7 +9,8 @@ class Requisition
 
     private RequestHandler $requestHandler;
 
-    public function __construct(RequestHandler $requestHandler) {
+    public function __construct(RequestHandler $requestHandler)
+    {
         $this->requestHandler = $requestHandler;
     }
 
@@ -21,8 +22,7 @@ class Requisition
     public function getRequisitions(): array
     {
         $response = $this->requestHandler->get('requisitions/');
-        $json = json_decode($response->getBody()->getContents(), true);
-        return $json;
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
@@ -39,14 +39,14 @@ class Requisition
      * @return array
      */
     public function createRequisition(
-        string $redirect,
-        string $institutionId,
+        string  $redirect,
+        string  $institutionId,
         ?string $endUserAgreementId = null,
         ?string $reference = null,
         ?string $userLanguage = null,
         ?string $ssn = null,
-        ?bool $accountSelection = null,
-        ?bool $redirectImmediate = null
+        ?bool   $accountSelection = null,
+        ?bool   $redirectImmediate = null
     ): array
     {
         $payload = [
@@ -54,17 +54,16 @@ class Requisition
             'institution_id' => $institutionId
         ];
         if ($endUserAgreementId) $payload['agreement'] = $endUserAgreementId;
-        if ($reference)          $payload['reference'] = $reference;
-        if ($userLanguage)       $payload['user_language'] = $userLanguage;
-        if ($ssn)                $payload['ssn'] = $ssn;
-        if ($accountSelection)   $payload['account_selection'] = $accountSelection;
-        if ($redirectImmediate)   $payload['redirect_immediate'] = $redirectImmediate;
+        if ($reference) $payload['reference'] = $reference;
+        if ($userLanguage) $payload['user_language'] = $userLanguage;
+        if ($ssn) $payload['ssn'] = $ssn;
+        if ($accountSelection) $payload['account_selection'] = $accountSelection;
+        if ($redirectImmediate) $payload['redirect_immediate'] = $redirectImmediate;
 
         $response = $this->requestHandler->post('requisitions/', [
             'json' => $payload
         ]);
-        $json = json_decode($response->getBody()->getContents(), true);
-        return $json;
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
@@ -76,8 +75,7 @@ class Requisition
     public function getRequisition(string $requisitionId): array
     {
         $response = $this->requestHandler->get("requisitions/{$requisitionId}/");
-        $json = json_decode($response->getBody()->getContents(), true);
-        return $json;
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     /**

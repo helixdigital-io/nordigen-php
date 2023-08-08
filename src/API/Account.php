@@ -2,41 +2,32 @@
 
 namespace Nordigen\NordigenPHP\API;
 
-use Nordigen\NordigenPHP\API\RequestHandler;
+readonly class Account
+{
 
-class Account {
-
-    private RequestHandler $requestHandler;
-
-    public function __construct(RequestHandler $requestHandler, string $accountId) {
-        $this->requestHandler = $requestHandler;
-        $this->accountId = $accountId;
+    public function __construct(private RequestHandler $requestHandler, private string $accountId)
+    {
     }
 
     /**
      * Retrieve account meta-data.
-     * @param string $accountId
-     *
      * @return array
      */
     public function getAccountMetaData(): array
     {
         $response = $this->requestHandler->get("accounts/{$this->accountId}/");
-        $json = json_decode($response->getBody()->getContents(), true);
-        return $json;
+
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
      * Retrieve account balances.
-     * @param string $accountId
-     *
      * @return array
      */
     public function getAccountBalances(): array
     {
         $response = $this->requestHandler->get("accounts/{$this->accountId}/balances/");
-        $json = json_decode($response->getBody()->getContents(), true);
-        return $json;
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
@@ -48,14 +39,13 @@ class Account {
     public function getAccountDetails(): array
     {
         $response = $this->requestHandler->get("accounts/{$this->accountId}/details/");
-        $json = json_decode($response->getBody()->getContents(), true);
-        return $json;
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
      * Retrieve account transactions.
      * @param string $accountId
-     * 
+     *
      * @return array
      */
     public function getAccountTransactions(?string $dateFrom = null, ?string $dateTo = null): array
@@ -64,12 +54,11 @@ class Account {
             'query' => []
         ];
 
-        if($dateFrom) $params['query']['date_from'] = $dateFrom;
-        if($dateTo)   $params['query']['date_to']   = $dateTo;
+        if ($dateFrom) $params['query']['date_from'] = $dateFrom;
+        if ($dateTo) $params['query']['date_to'] = $dateTo;
 
         $response = $this->requestHandler->get("accounts/{$this->accountId}/transactions/", $params);
-        $json = json_decode($response->getBody()->getContents(), true);
-        return $json;
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
@@ -86,12 +75,11 @@ class Account {
             'query' => []
         ];
 
-        if ($country)  $params['query']['country']   = $country;
+        if ($country) $params['query']['country'] = $country;
         if ($dateFrom) $params['query']['date_from'] = $dateFrom;
-        if ($dateTo)   $params['query']['date_to']   = $dateTo;
+        if ($dateTo) $params['query']['date_to'] = $dateTo;
 
         $response = $this->requestHandler->get("accounts/premium/{$this->accountId}/transactions/", $params);
-        $json = json_decode($response->getBody()->getContents(), true);
-        return $json;
+        return json_decode($response->getBody()->getContents(), true);
     }
 }

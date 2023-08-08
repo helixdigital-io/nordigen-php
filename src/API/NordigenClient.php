@@ -21,10 +21,10 @@ class NordigenClient
 
     public function __construct(string $secretId, string $secretKey, ?ClientInterface $client = null)
     {
-        $this->requestHandler   = new RequestHandler(self::BASE_URL, $secretId, $secretKey, $client);
-        $this->institution      = new Institution($this->requestHandler);
+        $this->requestHandler = new RequestHandler(self::BASE_URL, $secretId, $secretKey, $client);
+        $this->institution = new Institution($this->requestHandler);
         $this->endUserAgreement = new EndUserAgreement($this->requestHandler);
-        $this->requisition      = new Requisition($this->requestHandler);
+        $this->requisition = new Requisition($this->requestHandler);
     }
 
     /**
@@ -64,11 +64,11 @@ class NordigenClient
         int     $maxHistoricalDays = 90,
         int     $accessValidForDays = 90,
         ?string $reference = null,
-        ?array $accessScopes = ['details', 'balances', 'transactions'],
+        ?array  $accessScopes = ['details', 'balances', 'transactions'],
         ?string $userLanguage = null,
         ?string $ssn = null,
-        ?bool $accountSelection = null,
-        ?bool $redirectImmediate = null
+        ?bool   $accountSelection = null,
+        ?bool   $redirectImmediate = null
     ): array
     {
         $endUserAgreement = $this->endUserAgreement->createEndUserAgreement(
@@ -87,12 +87,11 @@ class NordigenClient
             $accountSelection,
             $redirectImmediate
         );
-        $result = [
+        return [
             'link' => $requisition["link"],
             'requisition_id' => $requisition["id"],
             'agreement_id' => $endUserAgreement["id"]
         ];
-        return $result;
     }
 
 

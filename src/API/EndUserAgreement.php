@@ -8,7 +8,8 @@ class EndUserAgreement
 {
     private RequestHandler $requestHandler;
 
-    public function __construct(RequestHandler $requestHandler) {
+    public function __construct(RequestHandler $requestHandler)
+    {
         $this->requestHandler = $requestHandler;
     }
 
@@ -21,8 +22,7 @@ class EndUserAgreement
     public function getEndUserAgreements(): array
     {
         $response = $this->requestHandler->get('agreements/enduser/');
-        $json = json_decode($response->getBody()->getContents(), true);
-        return $json;
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
@@ -36,9 +36,9 @@ class EndUserAgreement
      */
     public function createEndUserAgreement(
         string $institutionId,
-        array $accessScope = ['details', 'balances', 'transactions'],
-        int $maxHistoricalDays = 90,
-        int $accessValidForDays = 90
+        array  $accessScope = ['details', 'balances', 'transactions'],
+        int    $maxHistoricalDays = 90,
+        int    $accessValidForDays = 90
     ): array
     {
         $payload = [
@@ -50,8 +50,7 @@ class EndUserAgreement
         $response = $this->requestHandler->post('agreements/enduser/', [
             'json' => $payload
         ]);
-        $json = json_decode($response->getBody()->getContents(), true);
-        return $json;
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
@@ -63,8 +62,7 @@ class EndUserAgreement
     public function getEndUserAgreement(string $endUserAgreementId): array
     {
         $response = $this->requestHandler->get("agreements/enduser/{$endUserAgreementId}/");
-        $json = json_decode($response->getBody()->getContents(), true);
-        return $json;
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
@@ -100,7 +98,6 @@ class EndUserAgreement
         $response = $this->requestHandler->put("agreements/enduser/{$endUserAgreementId}/accept/", [
             'json' => $payload
         ]);
-        $json = json_decode($response->getBody()->getContents(), true);
-        return $json;
+        return json_decode($response->getBody()->getContents(), true);
     }
 }
