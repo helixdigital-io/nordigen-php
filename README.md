@@ -1,6 +1,10 @@
 # Nordigen PHP Library
 
-This is official PHP client library for [GoCardless Bank Account Data](https://gocardless.com/bank-account-data/).
+This is an unofficial PHP client library for [GoCardless Bank Account Data](https://gocardless.com/bank-account-data/).
+It is a fork of the official library an differs form the official version in the following ways:
+...
+...
+...
 
 For a full list of endpoints and arguments, see the [docs](https://developer.gocardless.com/bank-account-data/quick-start-guide).
 
