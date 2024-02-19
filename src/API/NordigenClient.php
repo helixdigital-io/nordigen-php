@@ -6,7 +6,7 @@ use GuzzleHttp\ClientInterface;
 
 class NordigenClient
 {
-    public const BASE_URL = 'https://ob.gocardless.com/api/v2/';
+    public const BASE_URL = 'https://bankaccountdata.gocardless.com/api/v2/';
     private RequestHandler $requestHandler;
     public Institution $institution;
     public EndUserAgreement $endUserAgreement;
