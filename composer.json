@@ -1,6 +1,6 @@
 {
   "name": "helixdigital-io/nordigen-php",
-  "description": "Nordigen official API client for PHP",
+  "description": "Nordigen unofficial API client for PHP",
   "type": "library",
   "authors": [
     {
